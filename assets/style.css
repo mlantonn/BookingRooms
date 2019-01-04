@@ -1,0 +1,184 @@
+/****    Block page    ****/
+
+body, html {
+
+	font-family: Arial, serif;
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.wrapper {
+	flex: 1 0 auto;
+}
+
+/****    Header    ****/
+
+header {
+	background-color: black;
+	min-height: 80px;
+	width: 100%;
+	display: flex;
+}
+
+#header_logo, #header_link{
+	height: 40px;
+	text-align: center;
+	margin: auto;
+}
+
+/***    Main block    ***/
+
+#explanations {
+	margin: auto;
+	width: 1080px;
+	padding: 40px;
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+#explanations p:not(:last-child) {
+	margin: 0px;
+}
+
+#explanations p:last-child {
+	margin: 0px;
+	margin-top: 10px;
+}
+
+#main_block {
+	width: 1080px;
+	margin: auto;
+	padding: 0px;
+	display: flex;
+	padding-bottom: 30px;
+}
+
+section {
+	margin: 20px;
+	padding: 25px;
+}
+
+/***    Sorting section    ***/
+
+#sorting_section {
+	width: 300px;
+	margin-left: 40px;
+	color: white;
+	background-color: rgb(43, 54, 71);
+}
+
+#sorting_section h1, #main_section h1 {
+	margin: 0px;
+	margin-bottom: 10px;
+}
+
+#sorting_form p, #equipements_checkboxes p {
+	line-height: 25px;
+}
+
+.input_date_time {
+	font-family: Arial, serif;
+	background-color: rgba(0, 0, 0, 0);
+	border: 1px solid white;
+	border-radius: 6px;
+	color: white;
+	margin: 4px;
+	padding: 2px;
+}
+
+#date_and_time_table {
+	border-collapse: collapse;
+}
+
+#date_and_time_table tr td label {
+	padding-right: 10px;
+	padding-bottom: 100px;
+}
+
+/***    Main section    ***/
+
+#main_section {
+	width: 595px;
+}
+
+#main_section button:hover {
+	box-shadow: 0px 0px 6px rgb(47, 66, 98);
+	background-color: rgb(57, 75, 120);
+	cursor: pointer;
+}
+
+#dummyframe {
+	display: none;
+}
+
+#booking_rooms_form {
+	display: flex;
+	flex-direction: column;
+}
+
+.booking_rooms {
+	font-family: Arial, serif;
+	text-align: left;
+	font-size: 1em;
+	border: none;
+	padding: 10px;
+	padding-left: 20px;
+	margin-top: 10px;
+	color: #EEE;
+	background-color: rgb(47, 66, 98);
+}
+
+.room_name {
+	padding: 0px;
+	padding-left: 5px;
+	margin: 5px;
+	text-decoration: none;
+}
+
+/***    Footer    ***/
+
+footer {
+	height: 50px;
+	flex-shrink: 0;
+	font-style: italic;
+	display: flex;
+	color: #DDD;
+	background-color: rgb(28, 34, 56);
+}
+
+#credits {
+	width: 550px;
+	margin: auto;
+	display: flex;
+	justify-content: space-between;
+	padding: 0px;
+}
+
+#credits p, #credits nav {
+	margin: auto;
+	flex: auto;
+	padding: 2px;
+	font-size: 0.9em;
+}
+
+#credits nav a {
+	color: #DDD;
+}
+
+#credits nav a:hover {
+	text-decoration: none;
+}
+
+/***    Media    ***/
+
+@media (max-width: 1100px)
+{
+	#main_block, #explanations {
+		width: auto;
+		min-width: 600px;
+	}
+}

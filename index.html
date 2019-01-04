@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+	
+	<!--    HEAD    -->
+	
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="assets/style.css">
+		<link rel="icon" href="https://stationf.co/wp-content/themes/station-f-switch/assets/branding/favicon.ico" />
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title>STATION F - Réservations de salles de réunions</title>
+	</head>
+
+	<!--    BODY    -->
+
+	<body>
+
+		<!--    WRAPPER    -->
+
+		<div class="wrapper">
+
+			<!--    HEADER    -->
+
+			<header>
+				<a id="header_link" href="https://stationf.co/fr/" title="Station F">
+					<img id="header_logo" src="https://online.stationf.co/img/station-f-logo-white.svg" alt="logo Station F" />
+				</a>
+			</header>
+
+			<!--    EXPLANATIONS    -->
+
+			<div id="explanations">
+				<p>Pour voir les salles disponibles, sélectionnez un jour, une heure de début et une heure de fin.</p>
+				<p>La réservation des salles se fait par tranches horaires de 15min, de 8h à 20h. Vous pouvez réserver plusieurs tranches pour la même réunion.</p>
+			</div>
+
+			<!--    MAIN BLOCK    -->
+
+			<div id="main_block">
+				
+
+
+				<!--    SORTING SECTION    -->
+
+				<section id="sorting_section">
+
+					<!--    DATE AND TIME    -->
+
+					<h1>Date et heure</h1>
+					<form id="date_and_time_form" method="POST" action="/">
+						<table id="date_and_time_table">
+							<tr>
+								<td><label for="date">Jour souhaité</label></td>
+								<td><input class="input_date_time" type="date" name="date" id="date" :value="date" :min="min_date" :max="max_date" required @change="handleChange($event)"></td>
+							</tr>
+							<tr>
+								<td><label for="min_hour">Heure (début)</label></td>
+								<td><input class="input_date_time" type="time" name="min_hour" id="min_hour" :value="min_hour" min="08:00" max="19:45" step="900" required @change="handleChange($event)"></td>
+							</tr>
+							<tr>
+								<td><label for="max_hour">Heure (fin)</label></td>
+								<td><input class="input_date_time" type="time" name="max_hour" id="max_hour" :value="max_hour" :min="min_hour" max="20:00" step="900" required @change="handleChange($event)"></td>
+							</tr>
+						</table>
+					</form><br />
+
+					<!--    SORTING FORM    -->
+
+					<h1>Trier par...</h1>
+					<form id="sorting_form">
+						<p>
+							<input type="radio" name="sorting" value="a_z" id="a_z" @change="handleChange($event)" /> <label for="a_z">Ordre alphabétique (A - Z)</label><br />
+
+							<input type="radio" name="sorting" value="z_a" id="z_a" @change="handleChange($event)" /> <label for="z_a">Ordre alphabétique (Z - A)</label><br />
+
+							<input type="radio" name="sorting" value="0_9" id="0_9" @change="handleChange($event)" /> <label for="0_9">Capacité (ordre croissant)</label><br />
+
+							<input type="radio" name="sorting" value="9_0" id="9_0" @change="handleChange($event)" /> <label for="9_0">Capacité (ordre décroissant)</label><br />
+
+						</p>
+					</form><br />
+
+					<!--    EQUIPEMENTS CHECKBOXES    -->
+
+					<h1>Équipements</h1>
+					<form id="equipements_checkboxes">
+						<p>
+							<span v-for="item in equipements">
+								<input type="checkbox" :name="item.name" :id="item.name" @change="handleChange($event)"/> <label :for="item.name">{{item.name}}</label><br>
+							</span>
+						</p>
+					</form><br />
+				</section>
+
+				<!--    MAIN SECTION    -->
+
+				<section id="main_section">
+					<h1>Salles disponibles</h1>
+
+					<form id="booking_rooms_form" method="POST" action="/">
+						<button type="submit" onclick="return(confirmForm(this))" form="date_and_time_form" class="booking_rooms" v-for="item in rooms" v-if="item.seen && !item.booked" name="room_name" :value="item.name">
+							<h3 class="room_name">{{item.name}}</h3>
+							<div>
+								<p>Capacité (en personnes) : <strong>{{item.capacity}}</strong><br />
+								<span v-if="item.equipements.length">Equipements :</span><span v-else>Pas d'équipement.</span>
+								<ul>
+									<li v-for="value in item.equipements">
+										{{ value.name }}
+									</li>
+								</ul></p>
+							</div>
+						</button>
+					</form>
+				</section>
+			</div>
+			<iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe"></iframe>
+		</div>
+
+		<!--    FOOTER    -->
+
+		<footer>
+			<div id=credits>		
+				<p>Créé par Mériadec Lantonnet, étudiant à 42</p>
+				<nav id="credit_links">
+					<a href="https://github.com/mlantonn" title="GitHub">GitHub</a> - <a href="https://www.linkedin.com/in/m%C3%A9riadec-lantonnet-931913159/">LinkedIn</a>
+				</nav>
+			</div>
+		</footer>
+
+		<!--    SCRIPT    -->
+
+		<script src="assets/index.js"></script>
+	</body>
+</html>

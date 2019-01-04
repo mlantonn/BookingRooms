@@ -1,0 +1,17 @@
+{
+  "name": "test-stationf",
+  "version": "0.1.0",
+  "description": "Creating a small website that allows to book meeting roooms",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js"
+  },
+  "author": "Meriadec Lantonnet",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.13"
+  }
+}
